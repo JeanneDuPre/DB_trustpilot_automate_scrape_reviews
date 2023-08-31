@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+import bs4
 import requests
 import pandas as pd
 from datetime import datetime
@@ -7,7 +7,7 @@ import os
 def fetch_articles(page):
     URL = f"https://de.trustpilot.com/review/www.db.de?page={page}"
     response = requests.get(URL, headers={"Accept-Language": "de-DE"})
-    soup = BeautifulSoup(response.content, features='lxml')
+    soup = bs4.BeautifulSoup(response.content, features='lxml')
     return soup.find_all('article', class_="paper_paper__1PY90 paper_outline__lwsUX card_card__lQWDv card_noPadding__D8PcU styles_reviewCard__hcAvl")
 
 def extract_article_data(item):
