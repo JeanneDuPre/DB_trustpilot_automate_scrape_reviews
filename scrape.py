@@ -73,8 +73,10 @@ def main():
                 article_data = extract_article_data(item)
                 articlelist.append(article_data)
 
-        df = pd.DataFrame(articlelist)
-        save_to_csv(df, page)
+    df = pd.DataFrame(articlelist)
+    current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    csv_filename = f'articlelist_{start_page}-{end_page}_Stand_{current_datetime}.csv'
+    save_to_csv(df, csv_filename)
 
 if __name__ == "__main__":
     main()
