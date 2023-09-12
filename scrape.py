@@ -91,7 +91,7 @@ def main():
     MONGODB_CONNECTION_STRING = os.environ['MONGODB_CONNECTION_STRING']
     client = MongoClient(MONGODB_CONNECTION_STRING)
     # convert to dictionary for uploading to MongoDB
-    df_dict = df_list.to_dict('records')
+    df_dict = df.to_dict('records')
 
     # point to symbolsDB collection 
     db = client.deutscheBahnTrustpilotDB
