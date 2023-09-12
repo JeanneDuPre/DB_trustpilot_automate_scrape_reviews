@@ -11,7 +11,7 @@ def fetch_articles(page):
     soup = bs4.BeautifulSoup(response.content, 'html.parser')
     return soup.find_all('article', class_="paper_paper__1PY90 paper_outline__lwsUX card_card__lQWDv card_noPadding__D8PcU styles_reviewCard__hcAvl")
 
-def extract_article_data(item):
+def extract_article_data(articles):
     article_list = []
     for item in articles: 
     # Extract data from each article item
