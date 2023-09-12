@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 from datetime import datetime
 import os
+from pymongo import MongoClient
 
 def fetch_articles(page):
     URL = f"https://de.trustpilot.com/review/www.db.de?page={page}"
@@ -52,31 +53,45 @@ def extract_article_data(item):
       'date_online': date_online
   }
 
-def save_to_csv(df, page):
+def save_to_csv(df):
     data_folder = "data"
     os.makedirs(data_folder, exist_ok=True)
-    current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    csv_filename = f'articlelist_{page}_Stand_{current_datetime}.csv'
+    current_datetime = datetime.now().strftime("%Y-%m-%d")
+    csv_filename = f'articlelist_Stand_{current_datetime}.csv'
     csv_filepath = os.path.join(data_folder, csv_filename)
     df.to_csv(csv_filepath, index=False)
 
 def main():
     start_page = 1
-    end_page = 3
     articlelist = []
 
-    for page in range(start_page, end_page + 1):
-        articles = fetch_articles(page)
-        
-        if articles is not None:
-            for item in articles:
-                article_data = extract_article_data(item)
-                articlelist.append(article_data)
+    while True: 
+        articles = fetch_articles(start_page)
+
+        if not articles: 
+            break
+    
+        article_data = extract_article_data(articles)
+        articlelist.extend(article_data)
+        start_page += 1
 
     df = pd.DataFrame(articlelist)
-    current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    csv_filename = f'articlelist_{start_page}-{end_page}_Stand_{current_datetime}.csv'
     save_to_csv(df, csv_filename)
+    # push symbol list to MongoDB
+    # establish a client connection to MongoDB
+    MONGODB_CONNECTION_STRING = os.environ['MONGODB_CONNECTION_STRING']
+    client = MongoClient(MONGODB_CONNECTION_STRING)
+    # convert to dictionary for uploading to MongoDB
+    df_dict = df_list.to_dict('records')
+
+    # point to symbolsDB collection 
+    db = client.deutscheBahnTrustpilotDB
+    # Use the current date and time as the collection name
+    current_date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    collection_name = f'db_trustpilot_{current_date}'
+
+    # Insert new documents into the collection
+    db[collection_name].insert_many(df_dict)
 
 if __name__ == "__main__":
     main()
