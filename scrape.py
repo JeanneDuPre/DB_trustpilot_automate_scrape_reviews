@@ -63,7 +63,6 @@ def extract_article_data(articles):
 def save_to_csv(df, csv_filename):
     data_folder = "data"
     os.makedirs(data_folder, exist_ok=True)
-    current_datetime = datetime.now().strftime("%Y-%m-%d")
     csv_filepath = os.path.join(data_folder, csv_filename)
     df.to_csv(csv_filepath, index=False)
 
@@ -83,15 +82,18 @@ def main():
     current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     csv_filename = f'DB_trustpilot_Stand_{current_datetime}.csv'
     save_to_csv(df, csv_filename)
+    
     # push symbol list to MongoDB
     # establish a client connection to MongoDB
     MONGODB_CONNECTION_STRING = os.environ['MONGODB_CONNECTION_STRING']
     client = MongoClient(MONGODB_CONNECTION_STRING)
+    
     # convert to dictionary for uploading to MongoDB
     df_dict = df.to_dict('records')
 
     # point to symbolsDB collection 
     db = client.deutscheBahnTrustpilotDB
+    
     # Use the current date and time as the collection name
     current_date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     collection_name = f'db_trustpilot_{current_date}'
