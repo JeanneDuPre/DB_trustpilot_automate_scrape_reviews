@@ -2,7 +2,7 @@
 
 There is a Python script that scrapes data from Trustpilot for Deutsche Bahn reviews and stores it in a MongoDB database. 
 
-This script does the following:
+<strong>Scrape.py</strong> does the following:
 
    1. Imports necessary libraries and modules:
     - requests for making HTTP requests.
@@ -17,17 +17,17 @@ This script does the following:
 
   4. Defines a function save_to_csv(df, csv_filename) that saves the extracted data to a CSV file.
 
-  5. In the main() function:
-    - Specifies the start and end page numbers for scraping (currently set to 1 to 3).
-    - Fetches articles from the start page.
-    - Extracts article data from the fetched articles.
-    - Converts the extracted data into a Pandas DataFrame.
-    - Generates a CSV filename based on the current date and time and saves the DataFrame to a CSV file.
-    - Establishes a connection to a MongoDB database using a connection string.
-    - Converts the DataFrame to a list of dictionaries for MongoDB insertion.
-    - Specifies the MongoDB database and collection names based on the current date and time.
-    - Inserts the data into the MongoDB collection.
+  5. In the main() function:<br>
+    - Specifies the start and end page numbers for scraping (currently set to 1 to 3).<br>
+    - Fetches articles from the start page.<br>
+    - Extracts article data from the fetched articles.<br>
+    - Converts the extracted data into a Pandas DataFrame.<br>
+    - Generates a CSV filename based on the current date and time and saves the DataFrame to a CSV file.<br>
+    - Establishes a connection to a MongoDB database using a connection string.<br>
+    - Converts the DataFrame to a list of dictionaries for MongoDB insertion.<br>
+    - Specifies the MongoDB database and collection names based on the current date and time.<br>
+    - Inserts the data into the MongoDB collection.<br>
 
-Finally, it runs the main() function when the script is executed.
+Finally, it runs the main() function when the script is executed.<br>
 
 TODO Trustpilot, MongoDB, GitHub Actions, data 
