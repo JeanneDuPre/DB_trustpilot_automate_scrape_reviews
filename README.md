@@ -29,3 +29,5 @@ This script does the following:
     - Inserts the data into the MongoDB collection.
 
 Finally, it runs the main() function when the script is executed.
+
+# TODO Trustpilot, MongoDB, GitHub Actions, data 
