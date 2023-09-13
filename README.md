@@ -30,4 +30,4 @@ This script does the following:
 
 Finally, it runs the main() function when the script is executed.
 
-# TODO Trustpilot, MongoDB, GitHub Actions, data 
+TODO Trustpilot, MongoDB, GitHub Actions, data 
