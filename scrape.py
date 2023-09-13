@@ -72,10 +72,11 @@ def main():
     end_page = 3
     articlelist = []
 
-    articles = fetch_articles(start_page)
+    for page in range(start_page, end_page + 1): 
+        articles = fetch_articles(page)
     
-    article_data = extract_article_data(articles)
-    articlelist.extend(article_data)
+        article_data = extract_article_data(articles)
+        articlelist.extend(article_data)
 
     df = pd.DataFrame(articlelist)
     # Define the CSV filename here
