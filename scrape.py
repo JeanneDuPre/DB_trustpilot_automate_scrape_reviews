@@ -69,17 +69,13 @@ def save_to_csv(df, csv_filename):
 
 def main():
     start_page = 1
+    end_page = 3
     articlelist = []
 
-    while True: 
-        articles = fetch_articles(start_page)
-
-        if not articles: 
-            break
+    articles = fetch_articles(start_page)
     
-        article_data = extract_article_data(articles)
-        articlelist.extend(article_data)
-        start_page += 1
+    article_data = extract_article_data(articles)
+    articlelist.extend(article_data)
 
     df = pd.DataFrame(articlelist)
     # Define the CSV filename here
