@@ -78,7 +78,7 @@ def main():
     df = pd.DataFrame(articlelist)
     # Define the CSV filename here
     current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    csv_filename = f'DB_trustpilot_Stand_{current_datetime}.csv'
+    csv_filename = f'DB_trustpilot_3_pages_Stand_{current_datetime}.csv'
     save_to_csv(df, csv_filename)
     
     # push symbol list to MongoDB
