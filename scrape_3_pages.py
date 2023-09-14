@@ -94,7 +94,7 @@ def main():
     
     # Use the current date and time as the collection name
     current_date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    collection_name = f'db_trustpilot_{current_date}'
+    collection_name = f'db_trustpilot_3_pages_Stand_{current_date}'
 
     # Insert new documents into the collection
     db[collection_name].insert_many(df_dict)
