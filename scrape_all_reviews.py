@@ -59,7 +59,7 @@ def save_to_csv(df):
     data_folder = "data"
     os.makedirs(data_folder, exist_ok=True)
     current_datetime = datetime.now().strftime("%Y-%m-%d")
-    csv_filename = f'DB_review_Stand_{current_datetime}.csv'
+    csv_filename = f'DB_all_review_Stand_{current_datetime}.csv'
     csv_filepath = os.path.join(data_folder, csv_filename)
     df.to_csv(csv_filepath, index=False)
 
