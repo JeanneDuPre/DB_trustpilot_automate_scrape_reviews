@@ -12,6 +12,7 @@ def fetch_articles(page):
     return soup.find_all('article', class_="paper_paper__1PY90 paper_outline__lwsUX card_card__lQWDv card_noPadding__D8PcU styles_reviewCard__hcAvl")
 
 def extract_article_data(item):
+    article_list = []
     author_element = item.find('span', class_= "typography_heading-xxs__QKBS8 typography_appearance-default__AAY17")
     author = author_element.text if author_element else None
         
