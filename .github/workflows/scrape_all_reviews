@@ -1,0 +1,26 @@
+name: Scrape DB reviews trustpilot
+
+on:
+  schedule:
+    - cron: "0 18 * * *" # every day at 18:00 
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+    - run: pip install requests bs4 pandas datetime pymongo
+    - name: Run scraper
+      run: python scrape_all_reviews.py
+    - name: Add and commit	
+      run: |-	
+        git add .	
+        git config user.name "Automated"	
+        git config user.email "actions@users.noreply.github.com"	
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0 	
+    - name: Push	
+      run: git push
