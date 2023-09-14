@@ -17,7 +17,7 @@ jobs:
     - name: Run scraper
       env:
         MONGODB_CONNECTION_STRING: ${{ secrets.MONGODB_CONNECTION_STRING }}
-      run: python scrape.py
+      run: python scrape_3_pages.py
     - name: Add and commit	
       run: |-	
         git add .	
