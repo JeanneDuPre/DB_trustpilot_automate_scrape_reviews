@@ -1,4 +1,4 @@
-name: Scrape DB reviews trustpilot
+name: Scrape DB reviews only the first 3 pages trustpilot
 
 on:
   schedule:
