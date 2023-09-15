@@ -3,7 +3,8 @@ name: Scrape DB reviews all trustpilot
 on:
   schedule:
     - cron: "0 18 * * *" # every day at 18:00 
-
+  workflow_dispatch:
+  
 jobs:
   scrape:
     runs-on: ubuntu-latest
