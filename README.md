@@ -1,4 +1,5 @@
 # DB_trustpilot_automate_scrape_reviews
+[![Scrape DB reviews all trustpilot](https://github.com/JeanneDuPre/DB_trustpilot_automate_scrape_reviews/actions/workflows/scrape_all_reviews.yml/badge.svg)](https://github.com/JeanneDuPre/DB_trustpilot_automate_scrape_reviews/actions/workflows/scrape_all_reviews.yml)
 
 There is a Python script that scrapes data from Trustpilot for Deutsche Bahn reviews and stores it in a MongoDB database. 
 
