@@ -77,7 +77,7 @@ def main():
 
     df = pd.DataFrame(articlelist)
     # Define the CSV filename here
-    current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    current_datetime = datetime.now().strftime("%Y-%m-%d")
     csv_filename = f'DB_trustpilot_3_pages_Stand_{current_datetime}.csv'
     save_to_csv(df, csv_filename)
     
@@ -93,7 +93,7 @@ def main():
     db = client.deutscheBahnTrustpilotDB
     
     # Use the current date and time as the collection name
-    current_date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    current_date = datetime.now().strftime("%Y-%m-%d")
     collection_name = f'db_trustpilot_3_pages_Stand_{current_date}'
 
     # Insert new documents into the collection
