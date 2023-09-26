@@ -3,7 +3,7 @@
 <br>
 There is a Python script that scrapes data from Trustpilot for Deutsche Bahn reviews and stores it in a MongoDB database. 
 
-# <strong>Scrape.py</strong> does the following:
+# <strong>Scrape_3_pages.py</strong> does the following:
 
    1. Imports necessary libraries and modules:
     - requests for making HTTP requests.
